@@ -30,21 +30,21 @@ def scrape_twitter(url, counter, formated_tags):
                 formated_tags.append(tag.get_attribute('href'))
 
 
-            print(6 - counter, "pages to visit")
+        print(6 - counter, "pages to visit")
 
-            url = random.choice(formated_tags)
-            url = str(url)
-            print("next url to visit: ", str(url))
+        url = random.choice(formated_tags)
+        url = str(url)
+        print("next url to visit: ", str(url))
+        next_url = driver.get(url)
 
         while counter < 6:
             counter += 1
-            scrape_twitter(url, counter, formated_tags)
+            scrape_twitter(next_url, counter, formated_tags)
+
+        driver.close()
 
 
 scrape_twitter(url, counter, formated_tags)
-
-
-driver.close()
 
 
 """
